@@ -4,9 +4,9 @@ import { BottomNav } from "./bottom-nav";
 
 export function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background max-w-md mx-auto relative shadow-2xl overflow-hidden">
+    <div className="min-h-[100dvh] flex flex-col bg-background">
       <TopHeader />
-      <main className="flex-1 overflow-y-auto pb-20 scroll-smooth">
+      <main className="flex-1 w-full max-w-screen-2xl mx-auto pb-20 md:pb-6">
         {children}
       </main>
       <BottomNav />

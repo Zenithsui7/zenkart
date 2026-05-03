@@ -14,14 +14,14 @@ export function BottomNav() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border pb-safe">
-      <nav className="flex justify-around items-center h-16 max-w-md mx-auto">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border pb-safe md:hidden">
+      <nav className="flex justify-around items-center h-16 max-w-md mx-auto md:max-w-none">
         {navItems.map((item) => {
           const isActive = location === item.path || (item.path !== "/" && location.startsWith(item.path));
           const Icon = item.icon;
           return (
-            <Link 
-              key={item.path} 
+            <Link
+              key={item.path}
               href={item.path}
               className={cn(
                 "flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors",
