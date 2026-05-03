@@ -1,0 +1,201 @@
+You are a senior full-stack product engineer and UI/UX architect. Your task is to build "ZenKart" — a next-generation super e-commerce platform that combines the best features of Amazon, Flipkart, Meesho, and OLX into one unified app.
+
+---
+
+## 🏷️ APP IDENTITY
+- Name: ZenKart
+- Tagline: "Shop. Sell. Discover. Everything, Everywhere."
+- Brand Colors: Deep Indigo (#1a1a2e), Electric Teal (#00d4aa), Warm Amber (#ffb347)
+- Logo: A stylized "Z" merging a shopping cart and a leaf (modern, trustworthy, vibrant)
+- Font Style: Clean, modern — think Poppins for headings, Inter for body
+- Target Market: India (support ₹ currency, Hindi/English toggle, UPI/COD payments)
+
+---
+
+## 🔐 AUTH & USER SYSTEM
+- OTP-based login via mobile number (like Meesho/Flipkart)
+- Email + password login
+- Google / Facebook OAuth
+- Role-based accounts:
+  - Buyer (default)
+  - Seller (apply to become one)
+  - Reseller (like Meesho — share products and earn commission)
+  - Used Goods Seller (like OLX — list second-hand items)
+- Profile: avatar, address book, wallet, order history, wishlist, reviews
+
+---
+
+## 🛒 CORE SHOPPING FEATURES (Amazon + Flipkart Style)
+- Homepage with hero banners, flash sales countdown timer, category grid
+- Smart search with autocomplete, filters, voice search
+- Product listing page with:
+  - Grid/List toggle
+  - Filters: price range, brand, rating, discount %, delivery time, seller
+  - Sort: relevance, price low-high, popularity, new arrivals
+- Product detail page:
+  - Multiple images + 360° view option
+  - Size/color/variant selector
+  - Stock indicator
+  - EMI options
+  - "Frequently Bought Together"
+  - Q&A section
+  - Reviews & ratings with photos
+  - Delivery date estimator by pincode
+- Cart with quantity control, save for later, coupon code field
+- Checkout: address selection → payment → order summary
+- Order tracking with real-time status timeline
+- Returns & Refund flow
+- Wishlist / Save for Later
+- Compare Products (side-by-side)
+- Recently Viewed
+- Product recommendations (AI-based — "You may also like")
+
+---
+
+## 🔁 RESELLER MODULE (Meesho Style)
+- Browse wholesale/low-cost products
+- "Share & Earn" button on every product
+- Reseller sets their own selling price (margin calculator)
+- Auto-generate shareable product cards (WhatsApp, Instagram)
+- Reseller dashboard: earnings, orders, commissions
+- Supplier catalog with bulk pricing
+- No minimum order requirement
+
+---
+
+## 📦 USED GOODS / C2C MARKETPLACE (OLX Style)
+- Post a free listing: title, description, photos, price, category, condition (new/like new/good/fair)
+- Categories: Electronics, Vehicles, Furniture, Fashion, Books, etc.
+- Location-based listings with map view
+- Chat between buyer and seller (in-app messaging)
+- Negotiation / Make an Offer button
+- Bump listing (promote post)
+- Report listing / flag as spam
+- "Free items" section
+
+---
+
+## 🏪 SELLER DASHBOARD (Amazon Seller Central Style)
+- Product listing management (add/edit/delete)
+- Inventory management with low-stock alerts
+- Order management: pending, processing, shipped, delivered
+- Sales analytics: revenue, units sold, returns
+- Promotions: create coupons, flash deals
+- Customer reviews management
+- Payout & settlement history
+- Seller rating & performance metrics
+
+---
+
+## 💳 PAYMENTS
+- UPI (GPay, PhonePe, Paytm)
+- Credit/Debit Cards
+- Net Banking
+- Cash on Delivery (COD)
+- ZenKart Wallet (add money, cashback credited here)
+- EMI (No-cost EMI for eligible products)
+- Buy Now Pay Later (BNPL)
+- Coupon codes & referral discounts
+
+---
+
+## 🎯 SMART FEATURES & AI
+- AI-powered product recommendations
+- Personalized homepage based on browsing history
+- Price drop alerts (notify when wishlist item price drops)
+- "Best Time to Buy" prediction
+- Fake review detection badge
+- Smart chatbot for customer support
+- Visual search (upload image to find similar products)
+- Voice search ("Find red Nike shoes under ₹2000")
+
+---
+
+## 🚀 MARKETING & ENGAGEMENT
+- Flash Sales with countdown timer
+- Daily deals section
+- Spin-to-win wheel for logged-in users (earn coupons)
+- Referral program: "Invite a friend, earn ₹100"
+- Loyalty points system (ZenCoins)
+- Push notifications: order updates, deals, back-in-stock
+- Email + SMS order confirmation
+- ZenKart Plus (premium membership): free delivery, early sale access, exclusive discounts
+
+---
+
+## 📱 APP SCREENS TO BUILD (Priority Order)
+1. Splash Screen + Onboarding (3 slides)
+2. Login / Register Screen
+3. Home Screen
+4. Category Browse Screen
+5. Search Results + Filters Screen
+6. Product Detail Screen
+7. Cart Screen
+8. Checkout Screen (address → payment → confirm)
+9. Order Tracking Screen
+10. Profile & Settings Screen
+11. Seller Dashboard Screen
+12. Reseller Hub Screen
+13. Used Goods Listing Screen (OLX-style)
+14. In-app Chat Screen
+15. Notifications Screen
+16. Wishlist Screen
+17. My Orders Screen
+18. Wallet & Payments Screen
+
+---
+
+## 🗄️ TECH STACK (Recommended)
+- Frontend: React Native (mobile) + Next.js (web)
+- Backend: Node.js + Express OR Django REST Framework
+- Database: PostgreSQL (main) + Redis (cache/sessions)
+- Search: Elasticsearch or Algolia
+- Storage: AWS S3 (images/videos)
+- Auth: Firebase Auth or custom JWT
+- Payments: Razorpay (supports UPI, cards, COD)
+- Real-time chat: Socket.io
+- Notifications: Firebase Cloud Messaging (FCM)
+- Maps: Google Maps API (for OLX-style location listings)
+- AI/ML: Python microservice for recommendations
+
+---
+
+## 🧱 DATABASE SCHEMA (Core Tables)
+- users (id, name, phone, email, role, wallet_balance, created_at)
+- products (id, title, description, price, mrp, images, category, seller_id, stock, rating)
+- orders (id, user_id, items_json, total, status, address_id, payment_method)
+- listings (id, user_id, title, description, price, images, condition, location, is_negotiable) — OLX listings
+- reseller_shares (id, reseller_id, product_id, share_price, commission_earned)
+- chats (id, buyer_id, seller_id, listing_id, messages_json)
+- reviews (id, product_id, user_id, rating, text, images)
+- coupons (id, code, discount_type, value, min_order, expiry)
+- wallet_transactions (id, user_id, amount, type, reference)
+- notifications (id, user_id, title, body, type, read, created_at)
+
+---
+
+## 🎨 UI/UX RULES
+- Mobile-first design (320px to 428px primary)
+- Bottom navigation bar: Home | Categories | Sell | Orders | Profile
+- Skeleton loaders (no blank loading screens)
+- Haptic feedback on add-to-cart, checkout
+- Dark mode support
+- Swipeable product image carousels
+- Sticky "Add to Cart" + "Buy Now" buttons on product page
+- Toast notifications for actions (added to cart, wishlist, etc.)
+- Pull-to-refresh on all listing screens
+
+---
+
+## ✅ QUALITY REQUIREMENTS
+- All screens must be pixel-perfect and production-ready
+- No placeholder "Lorem ipsum" — use realistic Indian product data
+- Prices in ₹ (INR), distances in km
+- Error states, empty states, and loading states for every screen
+- Accessibility: minimum AA contrast ratio, touch targets ≥ 44px
+- Performance: images lazy-loaded, lists virtualized
+- Security: input validation, no sensitive data in local storage
+
+---
+
+Start by building the Home Screen first, then proceed screen by screen in the priority order listed above. After each screen, ask for feedback before moving on.
